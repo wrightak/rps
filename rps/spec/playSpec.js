@@ -1,4 +1,4 @@
-describe('play', () => {
+describe('playRound', () => {
     let observer
 
     describe('p1 win scenarios', () => {
@@ -7,19 +7,19 @@ describe('play', () => {
         })
 
         it('rock vs. scissors', () => {
-            new Requests().play('rock', 'scissors', observer)
+            new Requests().playRound('rock', 'scissors', observer)
 
             expect(observer.p1Wins).toHaveBeenCalled()
         })
 
         it('scissors vs. paper', () => {
-            new Requests().play('scissors', 'paper', observer)
+            new Requests().playRound('scissors', 'paper', observer)
 
             expect(observer.p1Wins).toHaveBeenCalled()
         })
 
         it('paper vs. rock', () => {
-            new Requests().play('paper', 'rock', observer)
+            new Requests().playRound('paper', 'rock', observer)
 
             expect(observer.p1Wins).toHaveBeenCalled()
         })
@@ -31,19 +31,19 @@ describe('play', () => {
         })
 
         it('scissors vs. rock', () => {
-            new Requests().play('scissors', 'rock', observer)
+            new Requests().playRound('scissors', 'rock', observer)
 
             expect(observer.p2Wins).toHaveBeenCalled()
         })
 
         it('paper vs. scissors', () => {
-            new Requests().play('paper', 'scissors', observer)
+            new Requests().playRound('paper', 'scissors', observer)
 
             expect(observer.p2Wins).toHaveBeenCalled()
         })
 
         it('rock vs. paper', () => {
-            new Requests().play('rock', 'paper', observer)
+            new Requests().playRound('rock', 'paper', observer)
 
             expect(observer.p2Wins).toHaveBeenCalled()
         })
@@ -55,19 +55,19 @@ describe('play', () => {
         })
 
         it('rock vs. rock', () => {
-            new Requests().play('rock', 'rock', observer)
+            new Requests().playRound('rock', 'rock', observer)
 
             expect(observer.tie).toHaveBeenCalled()
         })
 
         it('scissors vs. scissors', () => {
-            new Requests().play('scissors', 'scissors', observer)
+            new Requests().playRound('scissors', 'scissors', observer)
 
             expect(observer.tie).toHaveBeenCalled()
         })
 
         it('paper vs. paper', () => {
-            new Requests().play('paper', 'paper', observer)
+            new Requests().playRound('paper', 'paper', observer)
 
             expect(observer.tie).toHaveBeenCalled()
         })
@@ -79,13 +79,13 @@ describe('play', () => {
         })
 
         it('invalid vs. rock', () => {
-            new Requests().play(Math.random(), 'rock', observer)
+            new Requests().playRound(Math.random(), 'rock', observer)
 
             expect(observer.invalid).toHaveBeenCalled()
         })
 
         it('rock vs. invalid', () => {
-            new Requests().play('rock', Math.random(), observer)
+            new Requests().playRound('rock', Math.random(), observer)
 
             expect(observer.invalid).toHaveBeenCalled()
         })
@@ -93,15 +93,15 @@ describe('play', () => {
 })
 
 function Requests() {
-    this.play = (p1Throw, p2Throw, observer) => {
-        if (!['rock', 'paper', 'scissors'].includes(p1Throw) ||
-            !['rock', 'paper', 'scissors'].includes(p2Throw)) {
+    this.playRound = (p1Hand, p2Hand, observer) => {
+        if (!['rock', 'paper', 'scissors'].includes(p1Hand) ||
+            !['rock', 'paper', 'scissors'].includes(p2Hand)) {
             observer.invalid()
-        } else if (p1Throw === p2Throw) {
+        } else if (p1Hand === p2Hand) {
             observer.tie()
-        } else if (p1Throw === 'scissors' && p2Throw === 'rock' ||
-            p1Throw === 'paper' && p2Throw === 'scissors' ||
-            p1Throw === 'rock' && p2Throw === 'paper') {
+        } else if (p1Hand === 'scissors' && p2Hand === 'rock' ||
+            p1Hand === 'paper' && p2Hand === 'scissors' ||
+            p1Hand === 'rock' && p2Hand === 'paper') {
             observer.p2Wins()
         } else {
             observer.p1Wins()
