@@ -2,6 +2,14 @@ function Requests() {
     this.playRound = (p1Hand, p2Hand, observer, repo) => {
         new PlayRoundRequest(p1Hand, p2Hand, observer, repo).process()
     }
+
+    this.fetchResults = (observer, repo) => {
+        if (repo.isEmpty()) {
+            observer.noRounds()
+        } else {
+            observer.rounds(repo.getAll())
+        }
+    }
 }
 
 function Round(p1Hand, p2Hand, result) {
