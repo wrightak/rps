@@ -26,7 +26,7 @@ describe("WebSpec", function () {
 
     it('displays INVALID if Requests calls invalid', () => {
         const invalidRequestStub = {
-            play: (p1Hand, p2Hand, observer) => observer.invalid()
+            playRound: (p1Hand, p2Hand, observer) => observer.invalid()
         }
 
         ReactDOM.render(
@@ -41,7 +41,7 @@ describe("WebSpec", function () {
 
     it('displays Player 1 Wins if Requests calls p1_wins', () => {
         const p1WinsRequestStub = {
-            play: (p1Hand, p2Hand, observer) => observer.p1Wins()
+            playRound: (p1Hand, p2Hand, observer) => observer.p1Wins()
         }
 
         ReactDOM.render(
@@ -56,7 +56,7 @@ describe("WebSpec", function () {
 
     it('displays Player 2 Wins if Requests calls p2_wins', () => {
         const p2WinsRequestStub = {
-            play: (p1Hand, p2Hand, observer) => observer.p2Wins()
+            playRound: (p1Hand, p2Hand, observer) => observer.p2Wins()
         }
 
         ReactDOM.render(
@@ -71,7 +71,7 @@ describe("WebSpec", function () {
 
     it('displays TIE if Requests calls tie', () => {
         const tieRequestStub = {
-            play: (p1Hand, p2Hand, observer) => observer.tie()
+            playRound: (p1Hand, p2Hand, observer) => observer.tie()
         }
 
         ReactDOM.render(
@@ -85,8 +85,8 @@ describe("WebSpec", function () {
     })
 
     it('sends p1 input and p2 input to the play request', () => {
-        const playSpy = jasmine.createSpy('playSpy')
-        const requests = {play: playSpy}
+        const playRoundSpy = jasmine.createSpy('playRoundSpy')
+        const requests = {playRound: playRoundSpy}
 
         ReactDOM.render(
             <PlayForm requests={requests}/>,
@@ -102,6 +102,6 @@ describe("WebSpec", function () {
 
         document.querySelector('button').click()
 
-        expect(playSpy).toHaveBeenCalledWith('rock', 'paper', jasmine.any(Object))
+        expect(playRoundSpy).toHaveBeenCalledWith('rock', 'paper', jasmine.any(Object))
     })
 })
