@@ -1,4 +1,4 @@
-RPS App
+## RPS App
 
 # Help Docs
 
