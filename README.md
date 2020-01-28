@@ -1,6 +1,6 @@
 ## RPS App
 
-# Help Docs
+### Help Docs
 
 [Jetbrains Keymaps](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 
@@ -8,7 +8,7 @@
 
 [React Cheat Sheet](https://gist.github.com/moonmaster9000/941b619d6b25cc740aad5f7e926a5150)
 
-# Reference Reading
+### Reference Reading
 [Little Mocker by Bob Martin](https://blog.cleancoder.com/uncle-bob/2014/05/14/TheLittleMocker.html)
 
 [The Test Double Rule of Thumb by Matt Parker](http://engineering.pivotal.io/post/the-test-double-rule-of-thumb/)
