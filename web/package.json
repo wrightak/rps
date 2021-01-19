@@ -2,17 +2,17 @@
   "name": "web",
   "version": "0.0.0",
   "dependencies": {
-    "rps": "file:../rps",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "rps": "file:../rps"
   },
   "devDependencies": {
-    "watchify": "latest",
-    "babelify": "latest",
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
-    "jasmine": "latest"
+    "babelify": "latest",
+    "jasmine": "latest",
+    "watchify": "latest"
   },
   "scripts": {
     "compile-app": "watchify src/App.js -o bundled/compiledApp.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] ]",
